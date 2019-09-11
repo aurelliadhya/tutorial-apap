@@ -1,4 +1,4 @@
-package apap.tutorial.hitungumur.model;
+package model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
