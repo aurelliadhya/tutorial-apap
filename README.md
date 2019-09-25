@@ -31,3 +31,25 @@
 - Keuntungan memakai Spring Boot dibanding Django.
 - Fitur-fitur pada Github, contohnya issues (Saya belum terlalu mengerti fungsinya)
 - Kegunaan dan cara menyusun RequestParam dan Path Variable
+
+---
+## Tutorial 
+### What I have learned today
+
+1. Cobalah untuk menambahkan sebuah restoran dengan mengakses link berikut:
+http://localhost:8080/restoran/add?idRestoran=1&nama=PanyuFC&alamat=Kantin%20Fasilkom&nomorTelepon=14022
+Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
+Url di atas tidak dapat dijalankan karena html "add-restoran" belum dibuat, sehingga controller tidak dapat merender html.
+
+2. Cobalah untuk menambahkan sebuah restoran dengan mengakses link berikut:
+http://localhost:8080/restoran/add?idRestoran=2&nama=KentukuFC&alamat=Kantin%20FIK
+Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi
+Perintah add tidak berhasil dilakukan karena tidak terdapat variabel nomorTelepon pada url.
+
+3. Jika Papa APAP ingin melihat restoran PanyuFC, link apa yang harus diakses?
+http://localhost:8080/restoran/view?idRestoran=1
+
+4. Tambahkan 1 contoh restoran lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/restoran/viewall, apa yang akan ditampilkan?
+Sertakan juga bukti screenshotmu
+Halaman akan menampilkan 2 restoran yang sudah diadd sebelumnya beserta id, alamat, dan nomor telepon dari masing-masing restoran tersebut.
+Link menuju bukti screenshot -> https://ibb.co/CPN2hPt
