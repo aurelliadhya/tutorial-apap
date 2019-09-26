@@ -33,7 +33,7 @@
 - Kegunaan dan cara menyusun RequestParam dan Path Variable
 
 ---
-## Tutorial 
+## Tutorial 2
 ### What I have learned today
 
 1. Cobalah untuk menambahkan sebuah restoran dengan mengakses link berikut:
@@ -53,3 +53,33 @@ http://localhost:8080/restoran/view?idRestoran=1
 Sertakan juga bukti screenshotmu
 Halaman akan menampilkan 2 restoran yang sudah diadd sebelumnya beserta id, alamat, dan nomor telepon dari masing-masing restoran tersebut.
 Link menuju bukti screenshot -> https://ibb.co/CPN2hPt
+
+---
+## Tutorial 3
+### What I have learned today
+
+1. Pada class MenuDb, terdapat method findByRestoranIdRestoran, apakah kegunaan dari method tersebut?
+	Kegunaan dari method tersebut yaitu untuk mencari menu berdasarkan id restoran yang sudah ada di database.
+
+2. Pada class RestoranController, jelaskan perbedaan method addRestoranFormPage dan addRestoranSubmit?
+	Method addRestoranFormPage berfungsi untuk membuat object restoran baru yang kemudian dilanjutkan ke halaman form-add-restoran untuk pengisian data restoran oleh user, sedangkan method addRestoranSubmit berfungsi untuk mengambil nilai dari form yang sudah diisi oleh user untuk disimpan ke database melalui method yang ada di dalamnya.
+
+3. Jelaskan apa kegunaan dari JPA Repository?
+	Kegunaan dari JPA Repository adalah untuk menyediakan segala fungsi tanpa harus membuat query terlebih dahulu, sehingga dapat mempermudah developer dalam mengakses data
+
+4. Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara RestoranModel dan MenuModel dibuat?
+	Pada bagian ini di MenuModel:
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "restoranId", referencedColumnName = "idRestoran", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private RestoranModel restoran;
+
+    Terdapat sebuah kolom di tabel RestoranModel yang merefer ke kolom di tabel MenuModel yaitu idRestoran, sehingga restoran dapat memiliki banyak menu.
+
+
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+	FetchType.LAZY: hibernate tidak memuat semua collection object (child) saat pengambilan data object parent, melainkan hanya dimuat jika dipanggil melalui getter method.
+	CascadeType.ALL: mendapatkan semua data dari suatu object atau tabel, termasuk tabel yang memiliki relasi dengannya.
+	FetchType.EAGER: hibernate memuat semua collection object (child) setelah data dari object parent diambil.
