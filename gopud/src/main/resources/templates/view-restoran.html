@@ -14,15 +14,38 @@
 
     <h2> Daftar Menu: </h2>
 
-    <div th:each="menu : ${menuList}">
-        <h3 th:text="'Nama: ' + ${menu.nama}"></h3>
-        <h3 th:text="'Harga: ' + ${menu.harga}"></h3>
-        <h3 th:text="'Deskripsi: ' + ${menu.deskripsi}"></h3>
-        <h3 th:text="'Durasi Penyajian: ' + ${menu.durasiMasak}"></h3>
-        <td><a th:href="@{/menu/changeMenu/} + ${menu.id}"> Change Menu </a></td>
-        <br>
-        <td><a th:href="@{/menu/deleteMenu/} + ${menu.id}"> Delete Menu </a></td>
-    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Id Menu</th>
+            <th>Nama</th>
+            <th>Harga</th>
+            <th>Deskripsi</th>
+            <th>Durasi Penyajian</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="menu, iterationStatus : *{menuList}">
+            <td th:text="${iterationStatus.count}"></td>
+            <td th:text="${menu.id}"></td>
+            <td th:text="${menu.nama}"></td>
+            <td th:text="${menu.harga}"></td>
+            <td th:text="${menu.deskripsi}"></td>
+            <td th:text="${menu.durasiMasak}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+<!--    <div th:each="menu : ${menuList}">-->
+<!--        <h3 th:text="'Nama: ' + ${menu.nama}"></h3>-->
+<!--        <h3 th:text="'Harga: ' + ${menu.harga}"></h3>-->
+<!--        <h3 th:text="'Deskripsi: ' + ${menu.deskripsi}"></h3>-->
+<!--        <h3 th:text="'Durasi Penyajian: ' + ${menu.durasiMasak}"></h3>-->
+<!--        <td><a th:href="@{/menu/changeMenu/} + ${menu.id}"> Change Menu </a></td>-->
+<!--        <br>-->
+<!--        <td><a th:href="@{/menu/deleteMenu/} + ${menu.id}"> Delete Menu </a></td>-->
+<!--    </div>-->
 
     <br>
     <td><a th:href="@{/menu/add/} + ${resto.idRestoran}"> Add Menu </a></td>
