@@ -60,10 +60,11 @@ public class MenuController {
     }
 
     //LATIHAN 4
-    @RequestMapping(value = "/menu/deleteMenu/{id}", method = RequestMethod.GET)
-    public String deleteMenu(@PathVariable(value = "id") Long id, Model model) {
-        MenuModel menu = menuService.getMenuByIdMenu(id).get();
-        menuService.deleteMenu(menu);
+    @RequestMapping(value = "/menu/deleteMenu", method = RequestMethod.POST)
+    public String deleteMenu(@ModelAttribute RestoranModel restoran, Model model) {
+        for (MenuModel menu : restoran.getListMenu()) {
+            menuService.deleteMenu(menu);
+        }
         return "delete-menu";
     }
 }

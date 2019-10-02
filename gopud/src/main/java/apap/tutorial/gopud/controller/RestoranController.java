@@ -47,20 +47,18 @@ public class RestoranController {
             //Request Parameter untuk dipass
             @RequestParam(value = "idRestoran") Long idRestoran, Model model
             ) {
+
         //Mengambil objek RestoranModel yang dituju
-        try {
-            RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
-            //Add model restoran ke "resto" untuk dirender
-            model.addAttribute("resto", restoran);
+        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
 
-            List<MenuModel> menuList = menuService.findAllMenuByIdRestoran(restoran.getIdRestoran());
-            model.addAttribute("menuList", menuList);
+        List<MenuModel> menuList = menuService.findAllMenuByIdRestoran(restoran.getIdRestoran());
+        restoran.setListMenu(menuList);
 
-            //Return view template
-            return "view-restoran";
-        } catch (NoSuchElementException noSuchElementException) {
-            return "cancel-action";
-        }
+        //Add model restoran ke "resto" untuk dirender
+        model.addAttribute("resto", restoran);
+
+        //Return view template
+        return "view-restoran";
     }
 
     //API yang digunakan untuk menuju halaman form change restoran
