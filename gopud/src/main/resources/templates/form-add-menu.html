@@ -7,8 +7,9 @@
 </head>
 
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
+<nav th:replace="fragments/fragment :: navbar(content='Form Add Menu')"></nav>
 <h3> Tambah Produk </h3>
+
 <form th:action="@{/menu/add}" th:object="${menu}" method="POST">
     <input type="hidden" th:field="*{restoran}" />
     Nama: <br>

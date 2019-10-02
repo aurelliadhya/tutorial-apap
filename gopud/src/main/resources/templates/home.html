@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <nav th:replace="fragments/fragment :: navbar(content='Home')"></nav>
 
     <div class="container-fluid">
         <h2>Selamat datang di GOPUD!</h2>
         <button class="btn btn-primary">
-            <a th:href="@{restoran/view-all}" style="color: white">View All Restoran</a>
+            <a th:href="@{restoran/viewall}" style="color: white">View All Restoran</a>
         </button>
         <hr>
         <div class="row">

@@ -6,7 +6,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <nav th:replace="fragments/fragment :: navbar(content='Delete Restoran')"></nav>
     <h2 th:text="'Restoran dengan nama ' + ${resto.nama} + ' dihapus'"></h2>
 </body>
 </html>

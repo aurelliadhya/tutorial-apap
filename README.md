@@ -78,8 +78,17 @@ Link menuju bukti screenshot -> https://ibb.co/CPN2hPt
 
     Terdapat sebuah kolom di tabel RestoranModel yang merefer ke kolom di tabel MenuModel yaitu idRestoran, sehingga restoran dapat memiliki banyak menu.
 
-
 5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
 	FetchType.LAZY: hibernate tidak memuat semua collection object (child) saat pengambilan data object parent, melainkan hanya dimuat jika dipanggil melalui getter method.
 	CascadeType.ALL: mendapatkan semua data dari suatu object atau tabel, termasuk tabel yang memiliki relasi dengannya.
 	FetchType.EAGER: hibernate memuat semua collection object (child) setelah data dari object parent diambil.
+
+---
+## Tutorial 4
+### What I have learned today
+
+1. Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 2
+2. Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 2
+3. Jelaskan perbedaan th:include dan th:replace
+4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
+

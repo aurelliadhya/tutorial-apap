@@ -6,9 +6,10 @@
         <object th:include="fragments/fragment :: js" th:remove="tag"></object>
     </head>
     <body>
-        <nav th:replace="fragments/fragment :: navbar"></nav>
+        <nav th:replace="fragments/fragment :: navbar(content='View Restoran')"></nav>
         <div class="container-fluid">
             <h2>Informasi Restoran</h2>
+            <br><br>
             <h3 th:text="'ID Restoran: ' + ${resto.idRestoran}"></h3>
             <h3 th:text="'Nama Restoran: ' + ${resto.nama}"></h3>
             <h3 th:text="'Alamat Restoran: ' + ${resto.alamat}"></h3>
@@ -20,6 +21,7 @@
                 </button>
             </form>
 
+            <br><br>
             <h2> Daftar Menu: </h2>
             <form th:action="@{/menu/deleteMenu}" th:object="${resto}" method="POST">
                 <table>
@@ -50,6 +52,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <br><br>
                 <button type="submit" class="btn btn-sm btn-danger">Hapus yang dipilih</button>
             </form>
             <br>

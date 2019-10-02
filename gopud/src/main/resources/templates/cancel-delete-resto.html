@@ -6,7 +6,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <nav th:replace="fragments/fragment :: navbar(content='Unable to Delete Restoran')"></nav>
     <h2 th:text="'Restoran memiliki daftar menu.'"></h2>
     <h2 th:text="'Proses gagal dilakukan.'"></h2>
 </body>
