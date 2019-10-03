@@ -8,10 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 @Controller
 public class MenuController {
@@ -24,20 +29,24 @@ public class MenuController {
 
     @RequestMapping(value = "/menu/add/{idRestoran}", method = RequestMethod.GET)
     private String addProductFormPage(@PathVariable(value = "idRestoran") Long idRestoran, Model model) {
-        MenuModel menu = new MenuModel();
         RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
-        menu.setRestoran(restoran);
-
-        model.addAttribute("menu", menu);
+        ArrayList<MenuModel> listMenu = new ArrayList<>();
+        restoran.setListMenu(listMenu);
+        listMenu.add(new MenuModel());
+        model.addAttribute("restoran", restoran);
+        model.addAttribute("nama", "Add Menu");
 
         return "form-add-menu";
     }
 
-    @RequestMapping(value = "menu/add", method = RequestMethod.POST)
-    private String addProductSubmit(@ModelAttribute MenuModel menu, Model model) {
-        menuService.addMenu(menu);
-
-        model.addAttribute("nama", menu.getNama());
+    @RequestMapping(value = "menu/add/{idRestoran}", params = {"save"}, method = RequestMethod.POST)
+    private String addProductSubmit(@ModelAttribute RestoranModel restoran, Model model) {
+        RestoranModel existingRestoran = restoranService.getRestoranByIdRestoran(restoran.getIdRestoran()).get();
+        for (MenuModel menu : restoran.getListMenu()) {
+            menu.setRestoran(existingRestoran);
+            menuService.addMenu(menu);
+        }
+        model.addAttribute("nama", "baru");
 
         return "add-menu";
     }
@@ -66,5 +75,23 @@ public class MenuController {
             menuService.deleteMenu(menu);
         }
         return "delete-menu";
+    }
+
+    @RequestMapping(value = "/menu/add/{idRestoran}", params = {"addRow"}, method = RequestMethod.POST)
+    public String addRow(RestoranModel restoran, MenuModel menu, BindingResult bindingResult, Model model) {
+        if (restoran.getListMenu() == null) {
+            restoran.setListMenu(new ArrayList<MenuModel>());
+        }
+        restoran.getListMenu().add(menu);
+        model.addAttribute("restoran", restoran);
+        return "form-add-menu";
+    }
+
+    @RequestMapping(value = "/menu/add/{idRestoran}", params = {"removeRow"}, method = RequestMethod.POST)
+    public String removeRow(RestoranModel restoran, BindingResult bindingResult, HttpServletRequest req, Model model) {
+        Integer id = Integer.valueOf(req.getParameter("removeRow"));
+        restoran.getListMenu().remove(id.intValue());
+        model.addAttribute("restoran", restoran);
+        return "form-add-menu";
     }
 }

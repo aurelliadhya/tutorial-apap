@@ -88,7 +88,17 @@ Link menuju bukti screenshot -> https://ibb.co/CPN2hPt
 ### What I have learned today
 
 1. Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 2
-2. Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 2
-3. Jelaskan perbedaan th:include dan th:replace
-4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
+  Dari latihan 2 saya belajar untuk menggunakan reuse pada fragment dengan mengubah variabel sesuai dengan kebutuhan. Pertama, saya mencari di internet dan mendapatkan beberapa contoh kasus yang sekiranya bisa saya jadikan referensi untuk mengerjakan nomor tersebut. Setelah itu, saya mencoba mengimplementasikan referensi kode tadi dengan cara mengubah sedikit menjadi 
+  <nav th:fragment="navbar(content)" class="navbar navbar-expand-lg navbar-light bg-light">
+      <a th:text="${content}" class="navbar-brand" href="#"></a>
 
+  Lalu, saya menyesuaikan 'content' dengan nama halaman masing-masing pada semua file html.
+
+2. Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 3
+
+
+3. Jelaskan perbedaan th:include dan th:replace
+    th:include akan memasukkan fragment spesifik dari body host tag kecuali tag dari fragment itu sendiri, sedangkan th:replace akan mengganti host tag body dengan host tag yang dimiliki oleh fragment.
+
+4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
+    th:object bertujuan untuk menunjukkan bahwa suatu action akan langsung terhubung dengan modelnya. Contohnya yaitu penggunaan th:object pada form yang setelah di-POST akan membuat sebuah object berdasarkan modelnya.

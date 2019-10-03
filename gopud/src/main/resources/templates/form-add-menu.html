@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="'http://thymeleaf.org">
+
 <head>
     <title> Add Menu </title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
@@ -10,21 +11,74 @@
 <nav th:replace="fragments/fragment :: navbar(content='Form Add Menu')"></nav>
 <h3> Tambah Produk </h3>
 
-<form th:action="@{/menu/add}" th:object="${menu}" method="POST">
-    <input type="hidden" th:field="*{restoran}" />
-    Nama: <br>
-    <input type="text" name="nama" />
-    <br>
-    Deskripsi: <br>
-    <input type="text" name="deskripsi" />
-    <br>
-    Harga: <br>
-    <input type="number" name="harga" />
-    <br>
-    durasiMasak (menit): <br>
-    <input type="number" name="durasiMasak" />
-    <br>
-    <button type="submit"> Submit </button>
+<form class="form-control" th:action="@{/menu/add/ + ${restoran.idRestoran}}" th:object="${restoran}" method="POST">
+    <input type="hidden" th:field="*{idRestoran}" />
+    <table id="table" class="table-sm-responsive order-list">
+        <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Deskripsi</th>
+            <th>Harga</th>
+            <th>Durasi Masak (menit)</th>
+<!--            <th><input type="button" class="btn btn-sm btn-primary" id="addrow" value="Add Row" /></th>-->
+            <th><button type="submit" name="addRow" class="btn btn-sm btn-primary">Add Row</button></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="menu,iterationStatus : *{listMenu}">
+                <td><input type="text" th:field="*{listMenu[__${iterationStatus.index}__].nama}" /></td>
+                <td><input type="text" th:field="*{listMenu[__${iterationStatus.index}__].deskripsi}" /></td>
+                <td><input type="number" th:field="*{listMenu[__${iterationStatus.index}__].harga}" /></td>
+                <td><input type="number" th:field="*{listMenu[__${iterationStatus.index}__].durasiMasak}" /></td>
+                <td><button type="submit" class="ibtnDel btn btn-md btn-danger" name="removeRow" th:value="${iterationStatus.index}">Hapus</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" type="submit" name="save">Submit</button>
 </form>
 </body>
+
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--    var counter = 0;-->
+
+<!--    $("#addrow").on("click", function () {-->
+<!--        var newRow = $("<tr>");-->
+<!--        var cols = "";-->
+
+<!--        cols += '<td><input type="text" name="nama"></td>';-->
+<!--        cols += '<td><input type="text" name="deskripsi"></td>';-->
+<!--        cols += '<td><input type="number" name="harga"></td>';-->
+<!--        cols += '<td><input type="number" name="durasiMasak"></td>';-->
+
+<!--        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';-->
+<!--        newRow.append(cols);-->
+<!--        $("table.order-list").append(newRow);-->
+<!--        counter++;-->
+<!--    });-->
+
+
+
+<!--    $("table.order-list").on("click", ".ibtnDel", function (event) {-->
+<!--        $(this).closest("tr").remove();-->
+<!--        counter -= 1-->
+<!--    });-->
+
+<!--    &lt;!&ndash;$('#TableID > tr').each(function() {-->
+<!--        var postData = {-->
+<!--        'nama':$(this).find('#nama').val(),-->
+<!--        'deskripsi':$(this).find('#deskripsi').val(),-->
+<!--        'harga':$(this).find('#harga').val(),-->
+<!--        'durasi_masak':$(this).find('#durasiMasak').val()-->
+<!--        };-->
+<!--        $.ajax({-->
+<!--        type: "POST",-->
+<!--        data: postData,-->
+<!--        success: success-->
+<!--        });-->
+<!--     });&ndash;&gt;-->
+
+
+<!--});-->
+<!--</script>-->
 </html>
