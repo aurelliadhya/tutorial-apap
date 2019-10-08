@@ -78,8 +78,27 @@ Link menuju bukti screenshot -> https://ibb.co/CPN2hPt
 
     Terdapat sebuah kolom di tabel RestoranModel yang merefer ke kolom di tabel MenuModel yaitu idRestoran, sehingga restoran dapat memiliki banyak menu.
 
-
 5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
 	FetchType.LAZY: hibernate tidak memuat semua collection object (child) saat pengambilan data object parent, melainkan hanya dimuat jika dipanggil melalui getter method.
 	CascadeType.ALL: mendapatkan semua data dari suatu object atau tabel, termasuk tabel yang memiliki relasi dengannya.
 	FetchType.EAGER: hibernate memuat semua collection object (child) setelah data dari object parent diambil.
+
+---
+## Tutorial 4
+### What I have learned today
+
+1. Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 2
+  Dari latihan 2 saya belajar untuk menggunakan reuse pada fragment dengan mengubah variabel sesuai dengan kebutuhan. Pertama, saya mencari di internet dan mendapatkan beberapa contoh kasus yang sekiranya bisa saya jadikan referensi untuk mengerjakan nomor tersebut. Setelah itu, saya mencoba mengimplementasikan referensi kode tadi dengan cara mengubah sedikit menjadi 
+  <nav th:fragment="navbar(content)" class="navbar navbar-expand-lg navbar-light bg-light">
+      <a th:text="${content}" class="navbar-brand" href="#"></a>
+
+  Lalu, saya menyesuaikan 'content' dengan nama halaman masing-masing pada semua file html.
+
+2. Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 3
+  Dari latihan 3 saya belajar untuk memasukkan beberapa row data sekaligus ke dalam database. Saya menambahkan params pada method di controller dan menyamakan namanya dengan button di html. Kemudian, saya menambahkan button 'Add row' yang terhubung pada method addRow untuk menambah row form dan button 'Hapus' untuk menghapus row. Lalu, saya membuat suatu arraylist untuk menampung barisan-barisan data yang akan disubmit oleh user. Setelah user memencet button submit, atribut dari menu-menu tersebut akan dimasukkan ke dalam arraylist tadi dan bersambung ke method addProductSubmit.
+
+3. Jelaskan perbedaan th:include dan th:replace
+  th:include akan memasukkan fragment spesifik dari body host tag kecuali tag dari fragment itu sendiri, sedangkan th:replace akan mengganti host tag body dengan host tag yang dimiliki oleh fragment.
+
+4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
+  th:object bertujuan untuk menunjukkan bahwa suatu action akan langsung terhubung dengan modelnya. Contohnya yaitu penggunaan th:object pada form yang setelah di-POST akan membuat sebuah object berdasarkan modelnya.
