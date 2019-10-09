@@ -1,9 +1,9 @@
 package apap.tutorial.gopud.controller;
+import apap.tutorial.gopud.model.MenuModel;
 import apap.tutorial.gopud.model.RestoranModel;
 import apap.tutorial.gopud.service.MenuService;
 import apap.tutorial.gopud.service.RestoranService;
 import org.hamcrest.Matchers;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -49,6 +52,16 @@ public class RestoranControllerTest {
         dummyRestoranModel.setListMenu(new ArrayList<>());
         return dummyRestoranModel;
     }
+
+//    private MenuModel generateDummyMenuModel(int count) {
+//        MenuModel dummyMenuModel = new MenuModel();
+//        dummyMenuModel.setNama("menu dummy " + count);
+//        dummyMenuModel.setId(Long.valueOf(count));
+//        dummyMenuModel.setDeskripsi("deskripsi " + count);
+//        dummyMenuModel.setHarga(BigInteger.valueOf(18000));
+//        dummyMenuModel.setDurasiMasak(count);
+//        return dummyMenuModel;
+//    }
 
     @Test
     public void whenViewAllRestoranAccessItShouldShowAllRestoranData() throws Exception {
@@ -99,5 +112,51 @@ public class RestoranControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("add-restoran"))
                 .andExpect(model().attribute("namaResto", is(nama)));
+    }
+
+    @Test
+    public void whenViewRestoranAccessItShouldShowRestoranData() throws Exception {
+        RestoranModel restoranModel = generateDummyRestoranModel(1);
+//        List<MenuModel> allMenuInDatabase = new ArrayList<>();
+//        for (int loopTimes = 3; loopTimes > 0; loopTimes--) {
+//            allMenuInDatabase.add(generateDummyMenuModel(loopTimes));
+//        }
+        when(restoranService.getRestoranByIdRestoran(Long.valueOf(1))).thenReturn(Optional.of(restoranModel));
+        mockMvc.perform(get("/restoran/view?idRestoran=1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(content().string(Matchers.containsString("Informasi Restoran")))
+                .andExpect(content().string(Matchers.containsString("ID Restoran")))
+                .andExpect(model().attribute("resto", hasProperty("idRestoran", is(Long.valueOf(1)))))
+                .andExpect(model().attribute("resto", hasProperty("nama", is("dummy 1"))))
+                .andExpect(model().attribute("resto", hasProperty("alamat", is("alamat 1"))))
+                .andExpect(model().attribute("resto", hasProperty("nomorTelepon", is(14000))));
+                verify(restoranService, times(1)).getRestoranByIdRestoran(Long.valueOf(1));
+//                .andExpect(model().attribute("menu", hasItem(
+//                    allOf(
+//                            hasProperty("id", is(1L)),
+//                            hasProperty("nama", is("menu dummy 1")),
+//                            hasProperty("harga", is(18000)),
+//                            hasProperty("deskripsi", is("deskripsi 1")),
+//                            hasProperty("durasiMasak", is(1L))
+//                    )
+//                )));
+//                .andExpect(model().attribute("listMenu", hasItem(
+//                        allOf(
+//                                hasProperty("id", is(2L)),
+//                                hasProperty("nama", is("menu dummy 2")),
+//                                hasProperty("harga", is(18000)),
+//                                hasProperty("deskripsi", is("deskripsi 2")),
+//                                hasProperty("durasiMasak", is(2L))
+//                        )
+//                )))
+//                .andExpect(model().attribute("listMenu", hasItem(
+//                        allOf(
+//                                hasProperty("id", is(3L)),
+//                                hasProperty("nama", is("menu dummy 3")),
+//                                hasProperty("harga", is(18000)),
+//                                hasProperty("deskripsi", is("deskripsi 3")),
+//                                hasProperty("durasiMasak", is(3L))
+//                        )
+//                )));
     }
 }
