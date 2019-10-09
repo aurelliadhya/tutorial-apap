@@ -102,3 +102,18 @@ Link menuju bukti screenshot -> https://ibb.co/CPN2hPt
 
 4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
   th:object bertujuan untuk menunjukkan bahwa suatu action akan langsung terhubung dengan modelnya. Contohnya yaitu penggunaan th:object pada form yang setelah di-POST akan membuat sebuah object berdasarkan modelnya.
+
+
+---
+## Tutorial 5
+### What I have learned today
+
+1. Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and
+then.
+2. Jelaskan perbedaan line coverage dan logic coverage.
+3. Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit test? Mengapa
+seperti itu? Apa akibatnya jika urutannya dibalik, adakah risiko tak terlihat yang mungkin
+terjadi?
+4. [Bonus] Jelaskan mengapa pada latihan no 3, main class spring tidak diikutsertakan ke dalam
+perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclude dari
+perhitungan code coverage.
