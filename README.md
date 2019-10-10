@@ -109,9 +109,23 @@ Link menuju bukti screenshot -> https://ibb.co/CPN2hPt
 ### What I have learned today
 
 1. Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and then.
+  Given: membuat 1 dummy restoran yang disimpan dalam variabel restoranModel
+  When: dummy restoran dengan id = 1 dipanggil berdasarkan id
+  Then: mengembalikan objek dummy tersebut
+
+  Pada method yang sudah saya buat dilakukan pengecekan terhadap atribut yang seharusnya ada pada halaman view restoran, seperti string 'Informasi Restoran', 'ID Restoran', dan lain sebagainya. Selain itu, dilakukan juga pengecekan nilai dari atribut-atribut tersebut.
 
 2. Jelaskan perbedaan line coverage dan logic coverage.
+  Line coverage adalah tes yang memastikan bahwa setiap baris dari source code sudah dieksekusi, sedangkan logic coverage adalah tes yang memastikan kesesuaian dari setiap struktur internal kode terhadap logika.
 
 3. Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit test? Mengapa seperti itu? Apa akibatnya jika urutannya dibalik, adakah risiko tak terlihat yang mungkin terjadi?
+  Sebenarnya, hal pertama yang sebaiknya dilakukan yaitu membuat unit test agar semua kode yang akan dibuat tercover oleh test dan meminimalisir terjadinya error. Risiko yang mungkin terjadi apabila urutan tersebut dibalik yaitu metode yang dibuat ternyata lebih kompleks dari yang seharusnya, sehingga menyebabkan sulitnya kode tersebut untuk dites. Selain itu, biasanya penulis kode akan lebih malas untuk membuat tes apabila implementasi kode telah berjalan dengan baik.
 
-4. [Bonus] Jelaskan mengapa pada latihan no 3, main class spring tidak diikutsertakan ke dalam perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclude dari perhitungan code coverage.
+Link menuju screenshots (karena saya tidak berhasil mengupload foto):
+1. Latihan nomor 1
+   Sebelum: https://drive.google.com/open?id=1HVxtYSZQR4SBcArP-2ogxWKDUhMPK1T7
+   Sesudah: https://drive.google.com/open?id=1N2wQJtCpBFilDtyL5md2l03MTE6In-WP
+
+2. Latihan nomor 2
+   Sebelum: https://drive.google.com/open?id=1c43_uUUn2Q8T2z-TAtSQR2AtbfHSwkHF
+   Sesudah: https://drive.google.com/open?id=1ka2FdDj2IGywf4oW1b7ENW9uNLdDI2v1
