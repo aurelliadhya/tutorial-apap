@@ -80,4 +80,14 @@ public class RestoranRestController {
     private Mono<RestoranDetail> postStatus() {
         return restoranRestService.postStatus();
     }
+
+    @GetMapping(value = "/restoran/chef")
+    private RestoranModel retriveMenu(@PathVariable("chefName") String chefName) {
+        try {
+            return restoranRestService.getMenu(chefName);
+        } catch (NoSuchElementException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Nama chef "+(chefName)+" Not Found");
+        }
+    }
 }

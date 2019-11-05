@@ -83,4 +83,10 @@ public class RestoranRestServiceImpl implements RestoranRestService {
                 .retrieve()
                 .bodyToMono(RestoranDetail.class);
     }
+
+    @Override
+    public Mono<String> getMenu(String chefName) {
+        return this.webClient.get().uri("/restoran/chef"+chefName)
+                .retrieve().bodyToMono(String.class);
+    }
 }
