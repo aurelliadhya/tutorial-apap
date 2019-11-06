@@ -129,3 +129,17 @@ Link menuju screenshots (karena saya tidak berhasil mengupload foto):
 2. Latihan nomor 2
    Sebelum: https://drive.google.com/open?id=1c43_uUUn2Q8T2z-TAtSQR2AtbfHSwkHF
    Sesudah: https://drive.google.com/open?id=1ka2FdDj2IGywf4oW1b7ENW9uNLdDI2v1
+
+---
+## Tutorial 6
+### What I have learned today
+
+1. Apa itu postman? Apa kegunaan dari postman?
+Postman adalah sebuah aplikasi untuk menguji keberhasilan dari REST API yang telah dibuat. Aplikasi ini berguna untuk developer yang berkutat dalam pembuatan API.
+
+2. Apa kegunaan dari annotation @JsonIgnoreProperties?
+Anotasi tersebut berfungsi untuk menggunakan serialisasi atau mengabaikan properti JSON.
+
+3. Apa itu ResponseEntity dan apa kegunaannya?
+ResponseEntity digunakan untuk melakukan konfigurasi respon HTTP dan mewakili seluruh respon dari HTTP yaitu kode status, header, dan body.
+
