@@ -143,3 +143,18 @@ Anotasi tersebut berfungsi untuk menggunakan serialisasi atau mengabaikan proper
 3. Apa itu ResponseEntity dan apa kegunaannya?
 ResponseEntity digunakan untuk melakukan konfigurasi respon HTTP dan mewakili seluruh respon dari HTTP yaitu kode status, header, dan body.
 
+---
+## Tutorial 7
+### What I have learned today
+
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
+Otentikasi adalah proses mengidentifikasi pengguna dan memberikan akses ke dalam sistem, sedangkan otorisasi adalah proses memeriksa hak pengguna untuk mengakses sistem. Konsep tersebut diimplementasikan pada method configure di WebSecurityConfig.java.
+
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerjanya! 
+Salah satu fitur security dari spring yang berfungsi untuk meng-encode password dari user. BCryptPasswordEncoder akan mengganti password menjadi kode random agar tidak tertulis secara eksplisit di database.
+
+3. Jelaskan secara singkat apa itu UUID dan mengapa kita memakai UUID di UserModel.java?
+UUID adalah sekumpulan 32 karakter (String) random yang berfungsi untuk men-generate ID atau string yang unik setiap pembuatan UUID baru. Fungsi UUID pada UserModel.java adalah untuk menjaga keunikan data antar user serta meningkatkan keamanan user apabila terdapat hacker yang ingin mencoba melakukan hack pada akun user. Hacker tersebut akan sulit menebak data karena terdapat kombinasi 32 karakter yang tidak memiliki pola khusus, sehingga hacking akan membutuhkan waktu yang lama.
+
+4. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?
+UserDetailsServiceImpl.java mengimplementasi UserDetailsService yang berfungsi untuk membuat autentikasi user dan menghasilkan objek UserDetail yang akan memberikan data user sesuai database dan memberikan otorisasi berdasarkan role yang dimiliki, sedangkan UserServiceImpl berfungsi untuk mengatur mapping yang dilakukan oleh user.

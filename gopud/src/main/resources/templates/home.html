@@ -11,10 +11,71 @@
     <nav th:replace="fragments/fragment :: navbar(content='Home')"></nav>
 
     <div class="container-fluid">
+        <h2 th:text=" 'Hello '+${#httpServletRequest.remoteUser}+' !'"></h2>
         <h2>Selamat datang di GOPUD!</h2>
-        <button class="btn btn-primary">
-            <a th:href="@{restoran/viewall}" style="color: white">View All Restoran</a>
-        </button>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <form th:action="@{/user/addUser}" method="POST">
+                            <label>User name</label>
+                            <input type="text" name="username" class="form-control"/>
+
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control"/>
+
+                            <label>Role</label>
+                            <select name="role" class="form-control">
+                                <option selected value="">-- Pilih Role --</option>
+                                <option th:each="roleAvailable : ${listRole}" th:value="${roleAvailable.id}" th:text="${roleAvailable.role}"></option>
+                            </select>
+
+                            <br>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <form th:action="@{/user/updatePassword}" method="POST">
+                            <input type="hidden" name="username" th:value="${#httpServletRequest.userPrincipal.name}">
+                            <label>Update password</label>
+
+                            <br><br>
+
+                            <label>Password lama</label>
+                            <input type="password" name="oldPassword" class="form-control"/>
+
+                            <label>Password baru</label>
+                            <input type="password" name="newPassword" class="form-control"/>
+
+                            <label>Konfirmasi password baru</label>
+                            <input type="password" name="confirmPassword" class="form-control"/>
+
+                            <br>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <button class="btn btn-primary">
+                            <a th:href="@{restoran/viewall}" style="color: white">View All Restoran</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <hr>
         <div class="row">
             <div class="col-md-6">
@@ -46,22 +107,6 @@
             </div>
         </div>
     </div>
-<!--<h2> Selamat datang di GOPUD! </h2>-->
-<!--<h3> Tambah Restoran </h3>-->
-<!--<td><a th:href="@{/restoran/add}"> Tambah Restoran </a></td>-->
-
-
-<!--<h3> Cari Restoran Berdasarkan ID </h3>-->
-
-<!--<form th:action="@{/restoran/view}" method="GET">-->
-<!--    Id Restoran: <br>-->
-<!--    <input type="text" name="idRestoran" />-->
-<!--    <button type="submit"> Cari </button>-->
-<!--</form>-->
-
-<!--<br>-->
-<!--<h3> Lihat Daftar Restoran </h3>-->
-<!--<td><a th:href="@{/restoran/viewall}"> Lihat Daftar Restoran </a></td>-->
 </body>
 
 </html>
