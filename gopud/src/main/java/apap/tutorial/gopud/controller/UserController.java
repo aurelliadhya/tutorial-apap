@@ -21,12 +21,20 @@ public class UserController {
     private RoleService roleService;
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    private String addUserSubmit(@ModelAttribute UserModel user) {
+    private String addUserSubmit(@ModelAttribute UserModel user, Model model) {
+        String username = user.getUsername();
+        if (userService.getUserByUsername(username) != null) {
+            String message = "Username telah terdaftar";
+            model.addAttribute("message", message);
+            return "home";
+        }
+
         String password = user.getPassword();
+
         Boolean containtsNumber = false;
         Boolean containtsLetter = false;
 
-        if (password.length() < 8) {
+        if (password.length() < 10) {
             return "invalid-password";
         } else {
             for (int i=0;i<password.length();i++) {

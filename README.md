@@ -158,3 +158,35 @@ UUID adalah sekumpulan 32 karakter (String) random yang berfungsi untuk men-gene
 
 4. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?
 UserDetailsServiceImpl.java mengimplementasi UserDetailsService yang berfungsi untuk membuat autentikasi user dan menghasilkan objek UserDetail yang akan memberikan data user sesuai database dan memberikan otorisasi berdasarkan role yang dimiliki, sedangkan UserServiceImpl berfungsi untuk mengatur mapping yang dilakukan oleh user.
+
+---
+## Tutorial 8
+### What I have learned today
+
+1. Hilangkan checkbox pada item di list bagian kiri. Gunakan approach terbaik menurut Anda. Anda hanya tidak diperbolehkan untuk membuat component Item baru.
+Saya membuat variabel "hide" untuk menandakan checkbox yang akan dihilangkan dan mana yang tidak. Lalu, saya menambahkan variabel tersebut dalam parameter fungsi List dan proses pemanggilan fungsi Item. Terakhir, saya menggunakan syntax hidden dan memasukkan variabel hide ke dalam syntax tersebut.
+Screenshots: 
+https://drive.google.com/open?id=1fCVpew9c5kMKASyJESkwFViKQzokuv8d
+https://drive.google.com/open?id=1j7-hXkSYHsoGURz3dEhepibH0BBW4S0N
+https://drive.google.com/open?id=1GQB7UXhxXTXQ6GViXNJ4a75jAgnzWY0V
+
+
+2. Jika kalian memilih item dari bagian kiri dan item dengan ID yang sama sudah ditambahkan sebelumnya, maka item tersebut terhapus dari bagian kanan. Buatlah mekanisme agar bagian kiri hanya melakukan operasi add. Berikut adalah ilustrasi behavior sekarang.
+Awalnya, saya mencoba menghapus kondisi else pada fungsi handleItemClick. Cara tersebut berhasil untuk membuat menu favorit tidak terhapus apabila saya melakukan klik pada item di sebelah kiri lebih dari sekali, namun menu favorit menjadi tidak dapat dihapus. Akhirnya, saya menambahkan parameter boolean "canDelete" pada fungsi handleItemClick pada App.js dan AppFunc.js yang berfungsi untuk menghapus menu favorit apabila diklik pada item sebelah kanan, serta mengubah kondisi menjadi else if. Lalu, saya menambahkan parameter "canDelete" tersebut pada saat pemanggilan fungsi handleItemClick pada kedua file tersebut.
+Screenshots:
+https://drive.google.com/open?id=1_SLGdFmYEKZfovSOy0PIiMf40OXg57V8
+https://drive.google.com/open?id=1wwJrxhLyNWP-4UFa8-mXNiuKU3_QLEVF
+
+3. Buatlah toggle dimana jika toggle ON, maka My Favorite ditampilkan. Jika toggle OFF, maka sembunyikan. Tata letak toggle tidak harus sama.
+Saya menggunakan state checked untuk membedakan menu favorit yang sudah ada isinya dan dapat ditampilkan dengan mengklik checkbox "show favorite". Saya membuat fungsi handleChangeChecked untuk mengubah status checked yang bergantung pada keadaan checkbox apakah di-check atau tidak. Kemudian, terdapat fungsi showFavItem untuk menampilkan menu favorit yang sudah dipilih.
+Screenshots:
+https://drive.google.com/open?id=1yy-LAxDEkf76T7qaOt18UHgcpnXKeP_s
+https://drive.google.com/open?id=1KM011wUOOlT4BvxFfxO2HK1ZFGs_XCsE
+https://drive.google.com/open?id=1MeLXPoC02vUkXmo-ILpyYik2liSRrnp6
+
+4. Jika daftar favorit kosong, maka tampilkan empty state. Hint: buat component bernama EmptyState.
+Saya membuat component EmptyState untuk menghandle apabila favItems kosong. Component tersebut menerima props.title yang akan menampilkan suatu tulisan apabila menu favorit belum terpilih.
+Screenshots:
+https://drive.google.com/open?id=1wyltNbGFAD6b8SD8qY5PloGOKoImFmKG
+https://drive.google.com/open?id=1fxxse4Hugcf_GhpkmHOEW00ySDTwJOIF
+
