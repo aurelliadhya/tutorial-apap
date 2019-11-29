@@ -190,3 +190,32 @@ Screenshots:
 https://drive.google.com/open?id=1wyltNbGFAD6b8SD8qY5PloGOKoImFmKG
 https://drive.google.com/open?id=1fxxse4Hugcf_GhpkmHOEW00ySDTwJOIF
 
+---
+## Tutorial 9
+### What I have learned today
+
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut?
+  Saya membuat fungsi clearForm untuk data restoran yang memanggil fungsi setState agar tidak melakukan setState secara berulang kali. Lalu, saya memanggil fungsi tersebut pada fungsi addRestoranHandler karena fungsi tersebut merupakan event handler untuk memanggil onClick saat memunculkan form pada modal. Ketika button add restoran diklik, maka state dari restoran yang sebelumnya di-add akan kembali lagi ke default yaitu form kosong.
+
+2. Jelaskan fungsi dari async dan await!
+  Async: fungsi yang mengembalikan variabel promise (yang menghandle fungsi async) apabila tidak terdapat fungsi await. Apabila terdapat fungsi await, maka async akan langsung mengembalikan hasil method tersebut.
+  Await: fungsi yang terdapat dalam fungsi async yang berfungsi untuk memberhentikan operasi fungsi async sementara, menunggu hasil promise, dan kemudian melanjutkan proses program.
+
+3. Masukkan jawaban dari TODO (Screenshot) pada Component Lifecycle pada pertanyaan ini.
+  Berikut hasil screenshot dari component lifecycle:
+  https://ibb.co/db4Lv4K
+  https://ibb.co/bXbyCgC
+  https://ibb.co/kqPwFC1
+  https://ibb.co/5TQPP3z
+  https://ibb.co/rwfrY7j
+  https://ibb.co/BwNBQ1g
+  https://ibb.co/1Ls1Ptk
+  https://ibb.co/swLjcKf
+
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
+Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja yang biasanya menggunakan lifecycle method tersebut”.
+- componentDidMount: method ini dipanggil setelah component di-mount ke dalam DOM dan biasanya digunakan apabila programmer menginginkan kode selalu dijalankan apabila component di-render. 
+- shouldComponentUpdate: method ini selalu dipanggil sebelum render untuk mengatur apakah suatu render ulang perlu dilakukan atau tidak. Method ini biasanya digunakan untuk mengembalikan nilai pada kondisi tertentu. 
+- componentDidUpdate: method ini dipanggil setelah dirender dan dapat digunakan untuk operasi DOM setelah data diperbaharui.
+- componentWillReceiveProps: method ini dipanggil apabila props sudah berubah selain pada render pertama dan akan melakukan perubahan state berdasarkan props yang ada dengan yang baru.
+- componentWillUnmount: method ini dipanggil ketika component sudah di-remove dari DOM dan digunakan ketika proses pembersihan dilakukan.
